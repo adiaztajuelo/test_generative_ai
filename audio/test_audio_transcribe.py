@@ -1,4 +1,4 @@
-from config import audio_prorroga_parte_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription_complete
+from config import audio_lince_iberico_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription_complete
 from pydub import AudioSegment
 import whisper
 
@@ -33,7 +33,7 @@ def split_audio_and_transcribe(file_path, max_duration):
 
 
 
-audio_file_path = audio_prorroga_parte_wave
+audio_file_path = audio_lince_iberico_wave
 
 # Duración máxima de cada parte en milisegundos
 max_duration_per_segment = 60000  # 60 segundos
