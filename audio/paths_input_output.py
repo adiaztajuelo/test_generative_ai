@@ -7,5 +7,5 @@ audio_mundial_complete = 'data_audio/final_mundial_2010.mp3'
 audio_segunda_parte = "data_audio/segunda-parte-final-mundial-2010.mp3"
 audio_segunda_parte_wave = "data_audio/segunda-parte-final-mundial-2010_wave.wav"
 audio_prorroga_parte_wave = "data_audio/prorroga-final-mundial-2010_wave.wav"
-output_transcription_complete = "output/transcription_complete.txt"
+output_transcription = "output/transcription.txt"
 audio_lince_iberico_wave = "data_audio/linceiberico_wave.wav"

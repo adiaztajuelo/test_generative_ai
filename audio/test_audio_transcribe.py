@@ -1,8 +1,9 @@
-from paths_input_output import audio_lince_iberico_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription_complete
+from paths_input_output import audio_lince_iberico_wave, short_audio_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription
 from pydub import AudioSegment
 import whisper
+import os
 
-
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Función para dividir el archivo de data_audio en segmentos
@@ -22,7 +23,7 @@ def split_audio_and_transcribe(file_path, max_duration):
         # transcribe
         transcribe_result = model.transcribe(temp_wave_1min)
 
-        with open(output_transcription_complete, "a", encoding="utf-8") as txt:
+        with open(output_transcription, "a", encoding="utf-8") as txt:
             txt.write(transcribe_result["text"])
 
         transcription_data = transcribe_result["text"]
@@ -33,7 +34,7 @@ def split_audio_and_transcribe(file_path, max_duration):
 
 
 
-audio_file_path = audio_lince_iberico_wave
+audio_file_path = short_audio_wave
 
 # Duración máxima de cada parte en milisegundos
 max_duration_per_segment = 60000  # 60 segundos
