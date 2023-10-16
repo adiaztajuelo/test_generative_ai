@@ -9,6 +9,7 @@ from langchain.vectorstores import FAISS
 from langchain.schema import SystemMessage, HumanMessage 
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
+from langchain.callbacks import get_openai_callback
 
 st.header("askPDF")
 OPENAI_API_KEY = st.text_input("OpenAI API Key", type="password")
@@ -22,13 +23,13 @@ def create_embeddings(pdf):
         text += page.extract_text()
 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=2000,
+        chunk_size=3000,
         chunk_overlap=100,
         length_function=len
     )    
     chunks = text_splitter.split_text(text)
 
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-mpnet-base-v2") # sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
     knowledge_base = FAISS.from_texts(chunks, embeddings)
 
     return knowledge_base
@@ -40,8 +41,8 @@ def main():
 
         if user_question:
             os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
-            docs = knowledge_base.similarity_search(user_question, 3)
-            llm = ChatOpenAI(model_name="gpt-4")
+            docs = knowledge_base.similarity_search(user_question, 5)
+            llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k")
             chain = load_qa_chain(llm, chain_type="stuff")
             messages = [
                 SystemMessage(
@@ -84,7 +85,9 @@ def main():
                 HumanMessage(content=user_question)
             ]
             
-            answer = chain.run(input_documents=docs, question=messages)
+            with get_openai_callback() as cb:
+                answer = chain.run(input_documents=docs, question=messages)
+                print(cb)
 
             images_info = None
             if "images = {'imag" in answer:
