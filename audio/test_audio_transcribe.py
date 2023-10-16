@@ -1,4 +1,4 @@
-from config import audio_lince_iberico_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription_complete
+from paths_input_output import audio_lince_iberico_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription_complete
 from pydub import AudioSegment
 import whisper
 
