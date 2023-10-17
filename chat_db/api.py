@@ -30,20 +30,44 @@ def send_message():
     """ Send a new message to the chat """
     message = request.args.get('message')
 
+    print(message)
     #TODO
 
     response = jsonify({'result': 'success'})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/check_message', methods=['GET'])
-def check_message():
+@app.route('/load_chat', methods=['GET'])
+def load_chat():
     """ Check if there is a new message in the chat """
-    chat = json.load(open('./chat.json', 'r', encoding='utf-8'))
-    if chat.get('role') == 'assistant' and chat.get('to') == 'user':
-        response = jsonify({'message': chat.get('content')})
-    else:
-        response = jsonify({'message': None})
+    print('x')
+    response = jsonify([
+        {
+            'from': 'assistant',
+            'to': 'user',
+            'content': 'Hola! en que puedo ayudarte?'
+        },
+        {
+            'from': 'user',
+            'to': 'assistant',
+            'content': 'Hola! quien soy?'
+        },
+        {
+            'from': 'assistant',
+            'to': 'system',
+            'content': 'Quien es este?'
+        },
+        {
+            'from': 'system',
+            'to': 'assistant',
+            'content': 'Es peter'
+        },
+        {
+            'from': 'assistant',
+            'to': 'user',
+            'content': 'Eres peter'
+        }
+    ])
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
