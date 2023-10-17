@@ -11,9 +11,9 @@ from langchain.schema import SystemMessage, HumanMessage
 from langchain.callbacks import get_openai_callback
 #
 from paths_input_output import audio_lince_iberico_wave, short_audio_wave, temp_wave_1min, output_file, short_audio_mp3, output_transcription
+from api_key import api_key
 
-
-OPENAI_API_KEY = ''
+OPENAI_API_KEY = api_key
 
 st.header("Knowledge base extracted from audio")
 audio_file_path = st.file_uploader("Audio file path (wav)", type="wav")
