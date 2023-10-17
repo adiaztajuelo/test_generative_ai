@@ -160,3 +160,5 @@ cython_debug/
 .idea/
 
 audio/output/transcription.txt
+audio/api_key.py
+askpdf-env/
