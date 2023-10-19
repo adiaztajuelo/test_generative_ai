@@ -160,4 +160,12 @@ cython_debug/
 .idea/
 
 audio/output/transcription.txt
+
+
+chat_db/credentials.yaml
+chat_db/chat.json
+chat_db/chatbot/.dart_tool/
+chat_db/chatbot/.idea/
+
 audio/api_key.py
+

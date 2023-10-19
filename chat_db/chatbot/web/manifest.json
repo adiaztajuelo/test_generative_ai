@@ -1,0 +1,12 @@
+{
+    "name": "chatbot",
+    "short_name": "chatbot",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Generative Chat Bot",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": []
+}
