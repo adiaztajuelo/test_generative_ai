@@ -18,3 +18,9 @@ Run
 streamlit run askPDF/app.py
 ```
 
+## Run chat_db app
+```
+cd chat_db
+flask --app api.py run
+```
+
