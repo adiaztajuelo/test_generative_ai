@@ -168,4 +168,5 @@ chat_db/chatbot/.dart_tool/
 chat_db/chatbot/.idea/
 
 audio/api_key.py
+config.py
 
