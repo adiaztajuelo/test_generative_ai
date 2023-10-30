@@ -159,6 +159,14 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
+askpdf-env/
+
+chat_db/credentials.yaml
+chat_db/chat.json
+chat_db/chatbot/.dart_tool/
+chat_db/chatbot/.idea/
+
 audio/output/transcription.txt
 audio/api_key.py
-askpdf-env/
+config.py
+
