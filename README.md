@@ -15,10 +15,12 @@ streamlit run audio/app_audio.py
 ## Run askPDF app
 Run
 ```
-streamlit run askPDF/app.py
+cd askPDF
+streamlit run app.py
 ```
 
 ## Run chat_db app
+Two steps:
 ```
 cd chat_db
 python api.py
