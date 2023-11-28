@@ -17,13 +17,15 @@ def load_chat_list_clean() -> List[Dict[str, str]]:
     to_append_messages = {}
     for i, message in enumerate(chat):
         if isinstance(message.get('content'), dict):
-            if 'to_system' in message.get('content'):
+            if message.get('content').get('to_system'):
                 to_append_messages[i] = message.get('content').get('to_system')
-            if 'to_user' in message.get('content'):
+            if message.get('content').get('to_user'):
                 message['content'] = message.get('content').get('to_user')
+            else:
+                message['remove'] = True
     for key, value in reversed(to_append_messages.items()):
         chat.insert(key, {'from': 'assistant', 'to': 'system', 'content': value})
-    return chat
+    return [message for message in chat if not message.get('remove')]
 
 def add_message(sender, to, message):
     """ Add a message to the chat """
